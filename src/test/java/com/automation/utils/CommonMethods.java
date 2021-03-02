@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.UnexpectedTagNameException;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.automation.utils.Constants;
+import com.pages.PackagesAndFlightsPageElements;
 import com.testbase.PageInitializer;
 
 public class CommonMethods extends PageInitializer {

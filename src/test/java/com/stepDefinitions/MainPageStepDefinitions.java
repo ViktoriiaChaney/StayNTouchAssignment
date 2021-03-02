@@ -6,6 +6,7 @@ import java.util.Set;
 import org.junit.Assert;
 
 import com.automation.utils.CommonMethods;
+import com.pages.PackagesAndFlightsPageElements;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -76,10 +77,8 @@ public class MainPageStepDefinitions extends CommonMethods {
 
 	@Then("select {string} and {string} dates")
 	public void select_and_dates(String departureDate, String returnDate) throws InterruptedException {
-		CommonMethods.sendText(packagesAndFlights.departingDate, departureDate);
+		CommonMethods.selectDateByJS(packagesAndFlights.departingDate, departureDate);
 		Thread.sleep(2000);
-		packagesAndFlights.returningDate.click();
-		packagesAndFlights.returningDate.clear();
 		CommonMethods.selectDateByJS(packagesAndFlights.returningDate, returnDate);
 		Thread.sleep(2000);
 	}
@@ -127,7 +126,7 @@ public class MainPageStepDefinitions extends CommonMethods {
 
 	@Then("apply distance from Downtown")
 	public void apply_distance_from_Downtown() throws InterruptedException {
-		Thread.sleep(2000);
+		Thread.sleep(5000);
 		CommonMethods.waitForClicability(chooseHotel.distanceFromDowntownBtn);
 		CommonMethods.jsClick(chooseHotel.distanceFromDowntownBtn);
 	}
@@ -187,6 +186,7 @@ public class MainPageStepDefinitions extends CommonMethods {
 				driver.switchTo().window(chooseRoom);
 			}
 		}
+		CommonMethods.waitForVisibility(chooseRoom.chooseYourRoom);
 	    CommonMethods.scrollIntoView(chooseRoom.chooseYourRoom);
 	    System.out.println("The room name is - "+chooseRoom.roomName.getText());
 	    System.out.println("The room size is - "+chooseRoom.roomSize.getText());
